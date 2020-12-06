@@ -4,7 +4,7 @@ const HomeV2 = () => import('Views/HomeV2');
 const Accessory = () => import('Views/Accesory');
 const Gadget = () => import('Views/Gadget');
 const Product = () => import('Views/Product');
-const Payment = () => import('Views/Payment/Payment');
+// const Payment = () => import('Views/Payment/Payment');
 const Cart = () => import('Views/Cart');
 const Checkout = () => import('Views/Checkout');
 const FinalReceipt = () => import('Views/FinalReceipt');
@@ -19,7 +19,7 @@ const Cards = () => import ('Views/UserAccount/Cards.vue');
 const EditProfile = () => import ('Views/UserAccount/EditProfile.vue');
 const EditAddress = () => import ('Views/UserAccount/EditAddress.vue');
 const EditProfileInfo = () => import ('Views/UserAccount/EditProfileInfo.vue');
-const BlogDetail = () => import('Views/Blogs/BlogDetails');
+// const BlogDetail = () => import('Views/Blogs/BlogDetails');
 const ContactUs = () => import('Views/Contact');
 const PrivacyPolicy = () => import('Views/PrivacyPolicy');
 const Register = () => import('Views/Sessions/Register');
@@ -57,10 +57,6 @@ export default {
 			path: '/products',
 			component: Product,
 			name: 'Fashion'
-		},
-		{ 
-			path: '/checkout/payment',
-			component: Payment 
 		},
 		{ 
 			path: '/cart',
@@ -117,11 +113,6 @@ export default {
 					path: '/account/profile/edit',name:'EditProfileInfo',component: EditProfileInfo,
 				},
         ]
-		},
-		{ 
-			path: '/blog-detail/:id',  
-			component: BlogDetail, 
-			name:'BlogDetail;'
 		},
 		{ 
 			path: '/contact',  

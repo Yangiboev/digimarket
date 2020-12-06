@@ -7,33 +7,29 @@
       </div>
       <div  class="search-form"  v-if="!isHidden">
         <div class="form">
-         <v-autocomplete
-            v-model="model"
-            :items="items"
-            :loading="isLoading"
-            :search-input.sync="search"
-            color="white"
-            hide-no-data
-            hide-selected
-            placeholder="Start typing to Search"
-            return-object
+          <template>
+          <v-toolbar
+            dark
+            color="teal"
+          >
+            <v-autocomplete
+              v-model="select"
+              :loading="loading"
+              :items="items"
+              :search-input.sync="search"
+              cache-items
+              class="mx-4"
+              flat
+              hide-no-data
+              hide-details
+              label="What state are you from?"
+              solo-inverted
             ></v-autocomplete>
-            <v-expand-transition>
-            <v-list
-              v-if="model"
-              class="red lighten-3"
-            >
-              <v-list-item
-                v-for="(field, i) in fields"
-                :key="i"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-text="field.value"></v-list-item-title>
-                  <v-list-item-subtitle v-text="field.key"></v-list-item-subtitle>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-expand-transition>
+            <v-btn icon>
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </v-toolbar>
+        </template>
             <v-btn class="close-btn white" @click="isHidden = !isHidden">
               <v-icon>close</v-icon>
             </v-btn>
