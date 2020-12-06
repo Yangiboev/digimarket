@@ -4,7 +4,7 @@
          <v-layout row wrap >
             <v-flex xs12 sm12 md6 lg4 xl4  v-for="item in data" :key="item.id">
                <div class="img-wrap">
-                  <router-link :to="item.path">
+                  <router-link :to="allproducts[0].id">
                      <img :src="item.image" alt="product">
                   </router-link>
                </div>
@@ -15,7 +15,11 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
    props: ['data'],
+   computed: {
+      ...mapGetters('allproducts')
+   }
 }
 </script>
