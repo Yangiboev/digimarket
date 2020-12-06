@@ -95,25 +95,6 @@
 										Add To WishList
 									</a>
 								</div>
-								<div class="mb-6 btn-wrap">
-									<v-btn 
-										v-if="ifItemExistInCart(selectedProduct)"
-										class="accent cpx-0"
-										large
-										to="/cart"
-									>
-										View Cart
-									</v-btn>
-									<v-btn 
-										v-else
-										class="accent d-inline-block cpx-0"
-										large 
-										@click="addProductToCart(selectedProduct)"
-									>
-										Add To Cart
-									</v-btn>
-									<v-btn large to="/checkout" class="white buyProduct cpx-0">Buy Now</v-btn>
-								</div>
 								<div>
 									<span>Share Now</span>
 									<emb-social-share class="mx-2"></emb-social-share>
@@ -136,28 +117,6 @@
                                     <router-link :to="'/products/'+title+'/'+product.objectID">
                                        <img :src="product.image" alt="related product" width="626" height="800">
                                     </router-link>
-                                    <div class="wishlist-icon">
-                                       <v-btn v-if="ifItemExistInWishlist(product)" @click="addItemToWishlist(product)" icon >
-                                          <v-icon  class="black--text">favorite</v-icon>
-                                       </v-btn>
-                                       <v-btn v-else @click="addItemToWishlist(product)" icon >
-                                          <v-icon class="grey--text">favorite</v-icon>
-                                       </v-btn>
-                                    </div>
-                                    <div class="add-to-cart">
-                                       <v-btn v-if="ifItemExistInCart(product)" to="/cart" class="primary" small icon>
-                                          <v-icon medium>edit</v-icon>
-                                       </v-btn>
-                                       <v-btn
-                                          v-else
-                                          class="accent"
-                                          small
-                                          icon
-                                          @click="addProductToCart(product)"
-                                       >
-                                          <v-icon>shopping_cart</v-icon>
-                                       </v-btn>
-                                    </div>
                                  </div>
                                  <div class="emb-card-content px-6 py-4 white">
                                     <h5  v-text="product.name"></h5>

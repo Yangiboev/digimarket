@@ -10,7 +10,7 @@
           <template>
           <v-toolbar
             dark
-            color="teal"
+            color="#283593"
           >
             <v-autocomplete
               v-model="select"
@@ -22,7 +22,7 @@
               flat
               hide-no-data
               hide-details
-              label="What state are you from?"
+              label="Search product"
               solo-inverted
             ></v-autocomplete>
             <v-btn icon>
@@ -43,46 +43,19 @@ import api from "Api"
    export default {
       data (){
          return{
-            descriptionLimit: 60,
-            entries: [],
-            isLoading: false,
-            model: null,
+           isHidden: true,
+            loading: false,
+            items: [],
             search: null,
-            isHidden: true,
+            select: null,
          }
       },
       computed: {
-      fields () {
-        if (!this.model) return []
-
-        return Object.keys(this.model).map(key => {
-          return {
-            key,
-            value: this.model[key] || 'n/a',
-          }
-        })
-      },
-      items () {
-        return this.entries.map(entry => {
-          const Description = entry.Description.length > this.descriptionLimit
-            ? entry.Description.slice(0, this.descriptionLimit) + '...'
-            : entry.Description
-
-          return Object.assign({}, entry, { Description })
-        })
-      },
     },
 
     watch: {
       search (val) {
-        // Items have already been loaded
-        if (this.items.length > 0) return
-
-        // Items have already been requested
-        if (this.isLoading) return
-
-        this.isLoading = true
-
+        val && val !== this.select && this.querySelections(val)
         // Lazily load input items
         api({
           url: '/product?name=' + val,
@@ -101,12 +74,20 @@ import api from "Api"
       },
     },
       methods: {
-         methods: {
+      querySelections (v) {
+        this.loading = true
+        // Simulated ajax query
+        setTimeout(() => {
+          this.items = this.states.filter(e => {
+            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+          })
+          this.loading = false
+        }, 500)
+      },
 			changeLanguage(language) {
 				this.$i18n.locale = language.locale;
 				this.$store.dispatch("changeLanguage", language);
 			}
-		}
       }
    }
 </script>

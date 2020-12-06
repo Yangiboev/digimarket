@@ -19,7 +19,6 @@ const Cards = () => import ('Views/UserAccount/Cards.vue');
 const EditProfile = () => import ('Views/UserAccount/EditProfile.vue');
 const EditAddress = () => import ('Views/UserAccount/EditAddress.vue');
 const EditProfileInfo = () => import ('Views/UserAccount/EditProfileInfo.vue');
-// const BlogDetail = () => import('Views/Blogs/BlogDetails');
 const ContactUs = () => import('Views/Contact');
 const PrivacyPolicy = () => import('Views/PrivacyPolicy');
 const Register = () => import('Views/Sessions/Register');
