@@ -29,8 +29,7 @@ const actions = {
 // mutations
 const mutations = {
    getProductsHandler() {
-      api
-         .get({
+      api({
             url: '/product',
             method: 'get'
          })

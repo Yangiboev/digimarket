@@ -12,7 +12,7 @@ import settings from './modules/settings';
 import payment from './modules/payment';
 import blog from './modules/blog';
 import productDetail from './modules/productDetail';
-
+import all from './modules/all'
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -20,6 +20,7 @@ export const store = new Vuex.Store({
         ecommerce,
         sidebar,
         settings,
+        all,
         payment,
         blog,
         productDetail

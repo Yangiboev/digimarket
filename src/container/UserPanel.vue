@@ -2,9 +2,9 @@
   <v-app>
     <vue-snotify></vue-snotify>    
     <div class="headers">
-      <emb-header-v1  v-if="$route.meta.header != 2 && $route.meta.header != 3 "></emb-header-v1>
+      <emb-header-v2  v-if="$route.meta.header != 2 && $route.meta.header != 3 "></emb-header-v2>
       <emb-header-v2  v-if="$route.meta.header === 2"></emb-header-v2>
-      <emb-header-v3  v-if="$route.meta.header === 3"></emb-header-v3>
+      <emb-header-v2  v-if="$route.meta.header === 3"></emb-header-v2>
     </div>
 
     <!-- Menu for mobile -->

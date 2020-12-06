@@ -5,24 +5,26 @@
             <div class="sec-title">
                <h3>{{secTitle}}</h3>
             </div>
-            <routerLink to='/products'>View All</routerLink>
+            <!-- <routerLink to='/products'>View All</routerLink> -->
          </div>
          <div class="layout row wrap mb-0">
             <v-container>
                <v-layout row wrap>
-                  <v-flex xs12 sm6 md6 lg3 xl3  v-for="(product,index) in toBeShown" :key="index">
+                  <v-flex xs12 sm6 md6 lg3 xl3  v-for="(product,index) in shown" :key="index">
                      <div class="emb-card box-shadow-md pa-6">
-                        <a href="javascript:void(0)">
+ 					<router-link :to="'/products/title/' + product.id">
                            <img :src="product.image" alt="Photo">
-                        </a>
+					</router-link>		
                         <div class="emb-card-content pt-4">
                            <p class="mb-0">
-                              <a href="javascript:void(0)" class="text-muted ">{{product.category}}</a>
+                              <a href="javascript:void(0)" class="text-muted ">{{product.url}}</a>
                            </p>
-                           <h5><a href="javascript:void(0)"> {{product.name}}</a></h5>
+						  
+                           <h5> <router-link :to="'/products/title/' + product.id">
+							   {{product.name}}</router-link></h5>
 									<v-btn 
 										class="my-0 mx-0"
-										:to="product.path"
+										:to="'/products/title/' + product.id"
 									>
 										Compare
 									</v-btn>
@@ -41,7 +43,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
    props: ['data','secTitle'],
@@ -51,15 +53,19 @@ export default {
 		}
    },
    computed:{
-		...mapGetters(["cart"]),
-		toBeShown() {
-			return this.data.slice(0, this.currentPage * 4);
+		...mapGetters(["cart", 'allproducts']),
+		shown () {
+			return this.allproducts.slice(0, this.currentPage * 4)
 		},
 		totalPages() {
 			return Math.ceil( this.data.length / 4);
 		}
 	},
+	mounted() {
+		this.getAllProducts()
+	},
    methods:{
+	   ...mapActions(['getAllProducts']),
 		nextPage(){
 			if(this.currentPage <  this.totalPages) this.currentPage++;
 		},

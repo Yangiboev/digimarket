@@ -24,8 +24,8 @@ export const currencies = [
    {
       id:0,
       img: '/static/images/united-states.png',
-      title:'USD',
-      symbol:"$"
+      title:'SOUMS',
+      symbol:"SOUMS"
    },
    {
       id:1,

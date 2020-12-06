@@ -8,23 +8,11 @@
 						<v-layout row wrap product-detail-row>
 							<v-flex xs12 sm12 md6 lg6 xl6 text-center>
 								<v-layout row wrap>
-									<v-flex xs2 sm2 md2 lg2 xl2 product-gallery>
-										<div 
-											class="detail-image-gallery d-inline-block mb-6 mx-2"  
-											v-for="(productItemImg,key) in selectedProduct.image_gallery" 
-											:key="key"
-											@mouseover="togglePreviewImage(productItemImg)"
-										>
-											<a href="javascript:void(0)">
-												<img :src="productItemImg" width="71" height="91" alt="product image">
-											</a>
-										</div>
-									</v-flex>
-									<v-flex xs10 lg10 sm10 md10 xl10 product-detail-img>
+									<v-flex xs12 lg12 sm12 md12 xl12 product-detail-img>
 										<div class="product-detail-thumb">
 											<div class="image-wrapper emb-card">
 												<a href="javascript:void(0)">
-													<img class="detailImg" :src="selectedImage"  width="auto" height="auto" alt="product detail image">
+													<img class="detailImg" :src="product.image"  width="auto" height="auto" alt="product detail image">
 												</a>
 											</div>
 										</div>
@@ -33,31 +21,34 @@
 							</v-flex>
 							<v-flex xs12 sm12 md6 lg6 xl5>
 								<router-link to="/">Back to shop</router-link>
-								<h3>{{selectedProduct.name}}</h3>
-								<a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a>
-								<emb-review-popup ref="productReviewPopup"></emb-review-popup>
-								<h4 class="accent--text"><emb-currency-sign></emb-currency-sign>{{selectedProduct.price}}</h4>
-								<ul class="product-availablity list-unstyled pl-0 mb-4 mt-4">
-									<li>
-										<template v-if="selectedProduct.availablity === true">
-											<span class="font-weight-medium">Availablity</span> : <span class="font-weight-regular">In Stocks</span>
-										</template>
-										<template v-else>
-											<span class="font-weight-medium">Availablity</span> : <span class="font-weight-regular">Out Of Stocks</span>
-										</template>
-									</li>
-									<li>
-										<span class="font-weight-medium">Product Code</span> : <span class="font-weight-regular">{{selectedProduct.product_code}}</span>
-									</li>
-									<li>
-										<span class="font-weight-medium">Tags</span>
-										<span>:</span>
-										<span class="font-weight-regular"	v-for="(tag,key) in selectedProduct.tags" :key="key">
-											{{tag}}
-										</span>
-									</li>
-								</ul>
-								<p>{{selectedProduct.descpription}}</p>
+								<h3>{{product.name}}</h3>
+								<!-- <a href="javascript:void(0)" class="color-inherit text-underline mb-4 d-inline-block" @click="showReviewPopup">ADD A REVIEW</a> -->
+								<!-- <emb-review-popup ref="productReviewPopup"></emb-review-popup> -->
+								<v-data-table
+									:items="product.prices"
+									hide-default-header
+    								hide-default-footer
+									class="elevation-1"
+								>
+									<template v-slot:item.price="{ item }">
+									<v-chip
+										:color="getColor(item.price)"
+										dark
+									>
+										{{ item.price }}
+									</v-chip>
+									</template>
+									<template v-slot:item.url="{ item }">
+									<v-icon
+										small
+										class="mr-2"
+										@click="getUrl(item.url)"
+									>
+										mdi-pencil
+									</v-icon>
+									</template>
+								</v-data-table>
+								<p>{{product.descpription}}</p>
 								<div class="bullet-points mb-4">
 									<ul class="features pl-13">
 										<li v-for="(Features,key) in selectedProduct.features" 	:key="key">
@@ -161,10 +152,11 @@ export default {
 	computed: {
 		...mapGetters(["cart","wishlist","selectedProduct","products"]),
 	},
-	mounted() {
+	beforeMount() {
 		this.title = this.$route.params.title;
 		this.id = this.$route.params.id;
 		this.getParametre(this.title,this.id);
+		this.getSelectedProduct(this.id)
 		
 	},
 	watch: {
@@ -178,19 +170,33 @@ export default {
 	data () {
 		return{
 			title: "",
+			product: null,
 			id: "",
+			headers: [
+			{ text: 'Shop', value: 'shop' },
+			{
+				text: 'Price',
+				align: 'start',
+				sortable: false,
+				value: 'price',
+			},
+			{ text: 'URL', value: 'url' },
+			],
 			selectedImage: null
 		}
 	},
 	methods: {
-
 		getSelectedProduct(id) {
 			api({
 				url: '/product/' +id,
 				method: 'get'
 			}).then((response) => {
 				console.log(response.data)
+				this.product = response.data.data
 			})
+		},
+		getUrl (url) {
+        window.open(url)
 		},
 		getParametre(param1,param2){
 			for (var type in this.products) {
@@ -238,6 +244,11 @@ export default {
 			}
 			return exists;
 		},
+		getColor (price) {
+        // if (price > 400) return 'red'
+        if (price > 200) return 'orange'
+        else return 'green'
+      },
 		/* to add a product in wishlist */
 		addItemToWishlist(product) {
 			if(this.ifItemExistInWishlist(product)) {
