@@ -13,7 +13,7 @@
                            {{sliderItem.percent}}
                            <sup class="bold-sup">{{sliderItem.offer}}</sup>
                         </h1>
-                        <v-btn color="accent mt-0" to="/products">Shop Now</v-btn>
+                        <v-btn color="accent mt-0" :to="'/products/'+allproducts[0].id">Shop Now</v-btn>
                      </div>
                 </div>
                </div>
@@ -25,9 +25,13 @@
 
 <script>
 import Slick from "vue-slick";
+import {mapGetters} from 'vuex'
 export default {
    props: ['data'],
    components: { Slick },
+   computed: {
+      ...mapGetters(['allproducts'])
+   },
    data() {
     return {
       slickOptions: {
