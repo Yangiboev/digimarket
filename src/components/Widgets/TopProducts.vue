@@ -12,16 +12,14 @@
                <v-layout row wrap>
                   <v-flex xs12 sm6 md6 lg3 xl3  v-for="(product,index) in shown" :key="index">
                      <div class="emb-card box-shadow-md pa-6">
- 					<router-link :to="'/products/title/' + product.id">
                            <img :src="product.image" alt="Photo">
-					</router-link>		
                         <div class="emb-card-content pt-4">
                            <p class="mb-0">
                               <a href="javascript:void(0)" class="text-muted ">{{product.url}}</a>
                            </p>
 						  
-                           <h5> <router-link :to="'/products/title/' + product.id">
-							   {{product.name}}</router-link></h5>
+                           <h5>
+							   {{product.name}}</h5>
 									<v-btn 
 										class="my-0 mx-0"
 										:to="'/products/title/' + product.id"
