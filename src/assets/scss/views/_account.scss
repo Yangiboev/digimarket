@@ -1,0 +1,81 @@
+/*--------------------------------------------------------------- 
+4.7 Account
+-----------------------------------------------------------------*/ 
+//--------------------| Account |---------------------//
+.account-wrap{
+   .emb-card{
+      background-color: $base;
+	}
+	.login-user-img img {
+		border-radius: 100%;
+	}
+	.account-block{
+		.v-list-item__action, .v-list-item__avatar {
+			min-width: 38px;
+		}
+		.v-list-item__action i{
+			color:$font-color;
+		} 
+		.v-list-item{
+			padding-left:30px;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
+		.theme--light.v-list .v-list-group__header:hover, .theme--light.v-list .v-list-item--highlighted, .theme--light.v-list .v-list-item--link:hover {
+			background: transparent;
+	  	}
+	}
+}
+.card-bg{
+   background-image: url(/static/images/card-edit.png);
+   flex: 1 1 50%;
+   box-sizing: border-box;
+   max-width: 50%;
+}
+.reciept-bg{
+	background-image: url(/static/images/billing-edit.png);
+   flex: 1 1 50%;
+   box-sizing: border-box;
+   max-width: 50%;
+}
+.user-bg{
+	background-image: url(/static/images/user-edit.png);
+   flex: 1 1 50%;
+   box-sizing: border-box;
+   max-width: 50%;
+}
+.profile-wrapper{
+   .proflie-field label {
+      width: 150px;
+      display: inline-block;
+  }
+}
+.edit-profile{
+	background-repeat: no-repeat;
+	background-position: center center;
+	opacity: .2;
+}
+.editInfo-wrap{
+	.v-input--radio-group__input{
+		display:flex;
+		flex-direction: row;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+	}
+	.v-input--radio-group--column .v-radio:not(:last-child):not(:only-child){
+		margin-bottom: 0;
+	}
+	.v-menu i{
+		font-size: 1rem;
+	}
+	.v-input--selection-controls .v-input__control{
+		margin-right:-18px;
+	}
+	.v-input--selection-controls:not(.v-input--hide-details) .v-input__slot{
+		margin-bottom: 0;
+	}
+}

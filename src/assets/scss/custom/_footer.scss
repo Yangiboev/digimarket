@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------- 
+3.6 Footer
+-----------------------------------------------------------------*/ 
+//======================|| Footer Scss ||======================//
+.footerV1-wrap{
+    background-color: $footer-bg;
+    hr {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 3rem 0;
+    }
+    h6{
+        font-weight:normal;
+    }
+    li{ 
+        padding-top:  0.5rem;
+        a{
+            color:$footer-color;
+            line-height: 27px;
+            font-size: .875rem;
+            &:hover{
+                color: $accent;
+            }
+        }
+    }
+    li,span{
+        font-size:0.875rem;
+    }
+    .footer-bottom-content{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        span{
+            font-size:0.875rem;
+            // margin-right: 13px;
+        }
+    }
+    .v-text-field > .v-input__control > .v-input__slot::after, .v-text-field > .v-input__control > .v-input__slot::before {
+        background-color: #fff;
+    }
+    .theme--dark.v-text-field .v-input__slot::before {
+        border-color: #fff;
+    }
+}
+.mx-7{
+    margin: 0 7px !important;
+}
+//----------------------| Responsive |-------------------//
+@media only screen and (max-width: 960px) {
+	.footerV1-wrap{
+        .footer-bottom{
+            .layout {
+                display: block;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 413px) {
+	.footerV1-wrap{
+		.footer-bottom-content{
+			display: block;
+			span{
+				font-size:0.875rem;
+			}
+		}
+	}
+}
