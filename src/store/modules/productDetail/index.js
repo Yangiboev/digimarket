@@ -30,9 +30,13 @@ const actions = {
 const mutations = {
    getProductsHandler() {
       api
-         .get("products.json")
+         .get({
+            url: '/product',
+            method: 'get'
+         })
          .then(response => {
             state.products = response.data;
+            console.log(response.data)
             // console.log(state.products);s
          })
          .catch(error => {

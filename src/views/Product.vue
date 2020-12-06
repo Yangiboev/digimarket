@@ -12,12 +12,7 @@
 			<ais-instant-search :search-client="searchClient" index-name="ikea">
 				<v-container grid-list-xl py-0>
 					<v-layout row wrap>
-						<v-flex xs12 sm12 md4 lg3 xl3>
-							<emb-sidebar-filters></emb-sidebar-filters>
-						</v-flex>
-						<v-flex xs12 sm12 md8 lg9 xl9>
 							<product-items></product-items> 
-						</v-flex>
 					</v-layout>
 			</v-container>
 		</ais-instant-search>
@@ -28,13 +23,13 @@
 <script>
 import AppConfig from "Constants/AppConfig";
 import ProductItems from "Components/Ecommerce/ProductItems";
-import SidebarFilters from 'Components/Ecommerce/SidebarFilters'
+// import SidebarFilters from 'Components/Ecommerce/SidebarFilters'
 import algoliasearch from 'algoliasearch/lite';
 import 'instantsearch.css/themes/algolia-min.css';
 
 export default {
 	components:{
-		embSidebarFilters:SidebarFilters,
+		// embSidebarFilters:SidebarFilters,
 		ProductItems
 	},
 	data(){

@@ -33,7 +33,7 @@
 		</div>
 		<ais-hits class="mb-4" :results-per-page="9">
         <template slot="item" slot-scope="{ item }">
-          <product-item :data="item "></product-item>
+          <product-item :data="item"></product-item>
         </template>
       </ais-hits>
 		<div class="pagination-wrap pt-2">
@@ -50,13 +50,21 @@
 </template>
 
 <script>
+	import {mapGetters, mapActions} from "vuex"
 	import ProductItem from "./ProductItem";
 
 	export default {
 		components: {
 			ProductItem
 		},
+		mounted () {
+			this.getProducts()
+		},
+		computed: {
+			...mapGetters(['products'])
+		},
 		methods: {
+			...mapActions(['getProducts']),
 			onPageChange() {
 				window.scrollTo(0, 0);
 			}

@@ -6,25 +6,9 @@
 				<router-link to="/product/product-detail">
 					<img alt="product" :src="data.image" >
 				</router-link>
-				<div class="wishlist-icon">
-					<v-btn v-if="ifItemExistInWishlist(data)" @click="addItemToWishlist(data)" icon >
-						<v-icon  class="black--text">favorite</v-icon>
-					</v-btn>
-					<v-btn v-else @click="addItemToWishlist(data)" icon >
-						<v-icon class="grey--text">favorite</v-icon>
-					</v-btn>
-				</div>
 				<div class="add-to-cart">
 					<v-btn v-if="ifItemExistInCart(data)" to="/cart" class="accent" small icon>
 						<v-icon>remove_red_eye</v-icon>
-					</v-btn>
-					<v-btn
-						v-else
-						class="accent"
-						small icon
-						@click="addProductToCart(data)"
-					>
-						<v-icon>shopping_cart</v-icon>
 					</v-btn>
 				</div>
 			</div>

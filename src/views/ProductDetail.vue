@@ -156,7 +156,7 @@
 
 <script>
 import {mapGetters} from "vuex";
-
+import api from 'Api'
 export default {
 	computed: {
 		...mapGetters(["cart","wishlist","selectedProduct","products"]),
@@ -172,6 +172,7 @@ export default {
 		 this.title = to.params.title;
 		 this.id = to.params.id;
 		 this.getParametre(this.title,this.id);
+		 this.getSelectedProduct(this.id)
     },
 },
 	data () {
@@ -182,7 +183,15 @@ export default {
 		}
 	},
 	methods: {
-		/* for routing matching **/
+
+		getSelectedProduct(id) {
+			api({
+				url: '/product/' +id,
+				method: 'get'
+			}).then((response) => {
+				console.log(response.data)
+			})
+		},
 		getParametre(param1,param2){
 			for (var type in this.products) {
 				if(type == param1){
