@@ -1,0 +1,98 @@
+/*--------------------------------------------------------------- 
+4.5 Blog
+-----------------------------------------------------------------*/ 
+//-------------------| Blog Detail |-----------------------//
+.emb-blogDetail-wrap{
+	.dropcap {
+		text-transform: uppercase;
+		font-size: 110px;
+		padding: 0 1rem 0 0;
+		margin: -.1rem 0 -1rem;
+		float: left;
+		font-weight: 700;
+		line-height: 117px;
+	}
+	.author-section h3, .blog-comment-section h2{
+		text-align: left;
+	}
+	.center-holder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: rgba(0,0,0,.5);
+		i,span,h5,h2{
+			color:$base;
+		}
+		i{
+			margin-right: .5rem;
+			vertical-align: top;
+		}
+		span{
+			font-size:14px;
+		}
+	}
+	.blog-img-wrapper {
+		position: relative;
+		height: calc(100vh - 164px);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+	.blog-content p {
+		font-size: 1.2rem;
+		line-height: 1.7;
+		margin-bottom: 2rem;
+	}
+	.v-chip{
+		margin-right:4px;
+		margin-left:0 ;
+	}
+	.comment-item {
+		margin:0rem !important;
+		border-bottom: 1px solid $base-200;
+		padding: 1rem 0;
+	}
+	.comment-list{
+		padding: 0;
+		.sub-comment{
+			padding-left: 4.5rem;
+			.comment-item {
+				border-top: 1px solid $base-200;
+				border-bottom:0;
+				padding: 0;
+			}
+		}
+	}
+	.tags-social-block{
+		.layout{
+			margin:0 -1px !important;
+		}
+	}
+   .social-icons .v-btn{
+	  height:40px;
+	  width:40px;
+	}
+	.v-input__slot{
+		margin-bottom: 0;
+	}
+	.px-14{
+		padding-left:14px;
+		padding-right:24px;
+   }
+   .author-section{
+      .sec-title{
+         margin-bottom:1.8rem;
+      }
+   }
+}
+@media all and (-ms-high-contrast:none){
+	.emb-blogDetail-wrap .center-holder{ 
+		justify-content: flex-start;
+	}
+}

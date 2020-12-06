@@ -1,0 +1,141 @@
+/*--------------------------------------------------------------- 
+4.3 Shop
+-----------------------------------------------------------------*/
+// Cart 
+
+.tab-bar-wrap.text-center {
+   overflow-x: auto;
+   display: flex;
+   padding: 0 20px 35px 20px;
+   margin: auto;
+   justify-content: center;
+}
+
+.comment-date{
+   text-align: right;
+   text-transform: capitalize;
+}
+.v-data-table {
+	th,td{
+		white-space: nowrap;
+	}
+}
+.emb-cart-wrap{
+	span.quantity{
+		color: $font-color;
+		font-size: 1.125rem;
+	}
+	.subtotal{
+		margin:0 -1px !important;
+
+	}
+	 .cart-item{
+		margin: 0 !important;	
+	}
+}
+body .layout-gap.subtotal{
+   margin-bottom: 2rem !important;
+}
+
+.cart-content{
+	.v-data-table td{
+		padding: 1rem;
+	}
+   .cart-item{
+      position:relative;
+         .flex{
+            padding:0 !important;
+            &.cart-product-name{
+               padding-left: 1rem !important;
+               padding-right:1rem !important;
+            }
+         }
+      .btn-action > *{
+      background: $base-200;
+      position: absolute;
+      top: 30%;
+      opacity: 0;
+      transition: all 0.3s ease-in-out 0s;
+      &:first-child {
+       right: 65px;
+      }
+       &:last-child {
+       right: 20px;
+
+      }
+   }
+   &:hover .btn-action > *{
+      opacity: 1;
+   }
+   }
+}
+
+.layout.row.wrap.product-cart-info {
+   margin-top: 30px !important;
+   margin-bottom: 15px !important;
+   margin-left:1rem !important;
+   margin-right:1rem !important;
+}
+
+.main-divi {
+   margin-top: 65px !important;
+}
+.card-visibility{
+   opacity: 0.3;
+}
+.v-datatable thead th.column.sortable .v-icon {
+    display: none;
+}
+// Checkout 
+.checkout-wrap{
+	.theme--light.v-label ,p{
+			color:$font-color;
+	}
+}
+// Payment 
+.emb-payment-wrap{
+	.v-radio{
+      transition:all 0.3s ease-in-out;
+      padding: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,.1);
+      margin: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      text-align: center;
+      border:2px solid transparent;
+      .v-label{
+         cursor:pointer;
+      }
+      &:hover{
+         border:2px solid $primary;
+      }
+   }
+   .v-input--radio-group__input{
+      display: block;
+   }
+}
+.contracted{
+      opacity: .7;
+      cursor: not-allowed;
+   
+}
+// Final Reciept 
+@media  print{
+   .summary-block{
+      display: flex;
+      .v-flex{
+         margin-bottom:1.25rem;
+      }
+   }
+}
+.cart-shop-list{
+	.emb-card >div{
+		border-bottom:1px solid rgba(0, 0, 0, 0.12);
+		&:last-child{
+			border: 0;
+		}
+	}
+}
